@@ -26,7 +26,7 @@
 %define python_sitelib %(%{pythonX} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
 
 Name:           virtual-host-gatherer
-Version:        1.0.21
+Version:        1.0.22
 Release:        1
 Summary:        Gather virtualization information
 License:        Apache-2.0
@@ -122,6 +122,19 @@ Requires:       %{name} = %{version}
 %description Nutanix
 Nutanix AHV connection module for gatherer
 
+%package NetBox
+Summary:        NetBox connection module
+Group:          Development/Languages
+Requires:       %{name} = %{version}
+%if 0%{?build_py3}
+Requires:       python3-pynetbox
+%else
+Requires:       python-pynetbox
+%endif
+
+%description NetBox
+NetBox connection module for gatherer
+
 %prep
 %setup -q
 
@@ -213,6 +226,13 @@ rm -rf %{buildroot}
 %{python_sitelib}/gatherer/modules/NutanixAHV.py*
 %if 0%{?build_py3}
 %{python_sitelib}/gatherer/modules/__pycache__/NutanixAHV.*
+%endif
+
+%files NetBox
+%defattr(-,root,root,-)
+%{python_sitelib}/gatherer/modules/NetBox.py*
+%if 0%{?build_py3}
+%{python_sitelib}/gatherer/modules/__pycache__/NetBox.*
 %endif
 
 %changelog
