@@ -95,14 +95,9 @@ class NetBox(WorkerInterface):
             nb = pynetbox.api(base_url, token=self.token, private_key=self.private_key)
 
             devices = nb.dcim.devices.all()
-            vms = nb.virtualization.virtual_machines.all()
-            tenants = nb.tenancy.tenants.all()
 
             for device in devices:
                 self.log.debug("Device id={0}, name={1}, Type={2}".format(device.id, device.name, device.device_type))
-
-            #for vm in vms:
-            #    self.log.debug("VM={0}, role={1}, status={2}".format(vm.name, vm.role, vm.status))
 
             for device in devices:
                 if not device.name:
