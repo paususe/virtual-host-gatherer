@@ -52,7 +52,7 @@ For more details, check https://github.com/uyuni-project/uyuni/blob/0706fa8a8019
 
 The lists of guest virtual machines running on the host can be provided in the `vms` key of he dictionary.
 
-The `optionalVmData` field provides additional data, using nay format, for VMs.
+The `optionalVmData` field provides additional data, using map format, for VMs.
 
 ## More
 

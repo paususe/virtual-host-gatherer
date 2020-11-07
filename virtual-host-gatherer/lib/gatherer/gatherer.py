@@ -141,8 +141,6 @@ class Gatherer(object):
             output[node.get("id", str(uuid.uuid4()))] = worker.run()
 
         if self.options.verbose >= 2:
-            #print("JSON: " + json)
-            #self.log.debug("Output: '%s'", json)
             self.log.debug("Output: '%s'", json.dumps(output, sort_keys=True, indent=4, separators=(',', ': ')))
 
         if self.options.outfile:
